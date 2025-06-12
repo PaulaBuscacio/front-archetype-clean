@@ -1,0 +1,49 @@
+.progress-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #f0f0f0;
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-bar-fill {
+  width: 100%;
+  height: 100%;
+  background-color: #4CAF50;
+  animation: progress-animation 1.5s infinite ease-in-out;
+  transform-origin: 0% 50%;
+}
+
+.progress-message {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+@keyframes progress-animation {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(0.5);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.generate-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.input-group input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
