@@ -38,9 +38,13 @@
   }
 }
 
-.generate-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+.generate-button {
+  background-color: #97e0b6;
+  cursor: pointer;
+}
+.generate-button:hover {
+  background-color: #1c9e68;
+  color: white;
 }
 
 .input-group input:disabled {

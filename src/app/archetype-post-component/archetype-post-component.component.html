@@ -1,9 +1,14 @@
 <div class="input-group">
           <label for="input1">ArtifactId</label>
-          <input id="input1" type="text" placeholder="com.example" />
+          <input id="input1" type="text"
+          [(ngModel)]="artifactId"
+          placeholder="com.example"
+          [disabled]="isLoading"/>
 
           <label for="input2">GroupId</label>
-          <input id="input2" type="text" placeholder="test" />
+          <input id="input2" type="text" placeholder="test"
+          [(ngModel)]="groupId"
+          [disabled]="isLoading" />
         </div>
         <div class="button">
           <button class="generate-button" type="button"

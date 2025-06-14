@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ArchetypePostComponentComponent } from './archetype-post-component/archetype-post-component.component';
@@ -7,7 +6,7 @@ import { ArchetypePostComponentComponent } from './archetype-post-component/arch
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, ArchetypePostComponentComponent],
+  imports: [CommonModule, ArchetypePostComponentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

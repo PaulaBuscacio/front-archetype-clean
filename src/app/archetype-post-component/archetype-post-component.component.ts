@@ -16,7 +16,7 @@ export class ArchetypePostComponentComponent {
 
   constructor(private http: HttpClient) {}
   groupId: string = '';
-  artidactId: string = '';
+  artifactId: string = '';
   isLoading: boolean = false;
   progressMessage: string = '';
 
@@ -24,11 +24,9 @@ export class ArchetypePostComponentComponent {
     this.isLoading = true;
     this.progressMessage = 'Gerando projeto...';
 
-    const artifactId = (document.getElementById('input1') as HTMLInputElement).value;
-    const groupId = (document.getElementById('input2') as HTMLInputElement).value;
       const body = {
-      artifactId: artifactId,
-      groupId: groupId
+      artifactId: this.artifactId,
+      groupId: this.groupId
     };
         const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -49,7 +47,7 @@ export class ArchetypePostComponentComponent {
           const contentDisposition = response.headers.get('content-disposition');
           const fileName = contentDisposition
             ? contentDisposition.split(';')[1].split('=')[1].replace(/"/g, '')
-            : `${artifactId}.zip`;
+            : `${this.artifactId}.zip`;
 
           // Criar URL do objeto blob
           const url = window.URL.createObjectURL(blob);
@@ -68,15 +66,25 @@ export class ArchetypePostComponentComponent {
           window.URL.revokeObjectURL(url);
 
           this.progressMessage = 'Download concluído!';
+          // Resetar os campos de entrada
+         this.artifactId = '';
+         this.groupId = '';
           setTimeout(() => {
+
             this.isLoading = false;
             this.progressMessage = '';
+
           }, 2000);
         }
       },
     error:error => {
       console.error('Erro ao gerar o projeto:', error);
-      alert('Erro ao gerar o projeto. Verifique o console para mais detalhes.');
+      alert('Erro ao gerar o projeto: verifique o preenchimento dos campos e tente novamente.');
+      // Resetar os campos de entrada
+      this.artifactId = '';
+      this.groupId = '';
+      this.isLoading = false;
+
     }
   });
   }
