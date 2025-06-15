@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-
+import { NotificationService } from '../notification.service';
 
 
 @Component({
@@ -13,8 +13,10 @@ import { NgIf } from '@angular/common';
   styleUrl: './archetype-post-component.component.css'
 })
 export class ArchetypePostComponentComponent {
-
-  constructor(private http: HttpClient) {}
+   constructor(
+    private http: HttpClient,
+    private notificationService: NotificationService
+  ) {}
   groupId: string = '';
   artifactId: string = '';
   isLoading: boolean = false;
@@ -77,9 +79,17 @@ export class ArchetypePostComponentComponent {
           }, 2000);
         }
       },
-    error:error => {
-      console.error('Erro ao gerar o projeto:', error);
-      alert('Erro ao gerar o projeto: verifique o preenchimento dos campos e tente novamente.');
+  error: (error) => {
+    if (error.error instanceof Blob) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const errorText = reader.result as string;
+        this.notificationService.showError(errorText || 'Erro ao gerar o projeto');
+      };
+      reader.readAsText(error.error);
+    } else {
+      this.notificationService.showError(error.error || 'Erro ao gerar o projeto');
+    }
       // Resetar os campos de entrada
       this.artifactId = '';
       this.groupId = '';

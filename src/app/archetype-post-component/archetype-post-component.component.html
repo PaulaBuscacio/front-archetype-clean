@@ -1,23 +1,43 @@
-<div class="input-group">
-          <label for="input1">ArtifactId</label>
-          <input id="input1" type="text"
-          [(ngModel)]="artifactId"
-          placeholder="com.example"
-          [disabled]="isLoading"/>
+<div class="form-container">
+  <div class="input-group">
+    <div class="form-field">
+      <label for="input1">ArtifactId</label>
+      <input
+        id="input1"
+        type="text"
+        [(ngModel)]="artifactId"
+        placeholder="com.example"
+        [disabled]="isLoading"
+      />
+    </div>
 
-          <label for="input2">GroupId</label>
-          <input id="input2" type="text" placeholder="test"
-          [(ngModel)]="groupId"
-          [disabled]="isLoading" />
-        </div>
-        <div class="button">
-          <button class="generate-button" type="button"
-          (click)="generateProject()" [disabled]="isLoading">
-                 {{ isLoading ? 'Gerando...' : 'Gerar Projeto' }} </button>
-        </div>
-        <div class="progress-container" *ngIf="isLoading">
-        <div class="progress-bar">
-          <div class="progress-bar-fill"></div>
-        </div>
-        <div class="progress-message">{{ progressMessage }}</div>
+    <div class="form-field">
+      <label for="input2">GroupId</label>
+      <input
+        id="input2"
+        type="text"
+        [(ngModel)]="groupId"
+        placeholder="test"
+        [disabled]="isLoading"
+      />
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button
+      class="generate-button"
+      type="button"
+      (click)="generateProject()"
+      [disabled]="isLoading"
+    >
+      {{ isLoading ? 'Gerando...' : 'Gerar Projeto' }}
+    </button>
+  </div>
+
+    <div class="progress-container" *ngIf="isLoading">
+      <div class="progress-message">{{ progressMessage }}</div>
+      <div class="progress-bar">
+        <div class="progress-bar-fill"></div>
       </div>
+  </div>
+</div>

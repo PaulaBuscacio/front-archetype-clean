@@ -1,0 +1,50 @@
+.notification-overlay {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .notification {
+      width: 100%;
+      max-width: calc(100% - 30px);
+      padding: 20px 40px 20px 20px;
+      border-radius: 8px;
+      color: white;
+      position: relative;
+      animation: fadeIn 0.3s ease-out;
+      display: flex;
+      justify-content: center;
+      background-color: #f44336;
+
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0 8px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
