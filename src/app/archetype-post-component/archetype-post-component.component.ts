@@ -34,7 +34,7 @@ export class ArchetypePostComponentComponent {
       'Content-Type': 'application/json',
       'Accept': 'application/zip'
     });
-   this.http.post('http://localhost:8080/archetype', body, {
+   this.http.post('http://localhost:8080/api-clean/archetype', body, {
       headers: headers,
       responseType: 'blob', // Importante para receber dados binários
       observe: 'response'
