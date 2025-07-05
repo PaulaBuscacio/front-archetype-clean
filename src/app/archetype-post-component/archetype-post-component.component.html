@@ -1,22 +1,23 @@
 <div class="form-container">
-  <div class="input-group">
+
+
     <div class="form-field">
-      <label for="input1">ArtifactId</label>
+      <label for="input1">GroupId</label>
       <input
         id="input1"
         type="text"
-        [(ngModel)]="artifactId"
+        [(ngModel)]="groupId"
         placeholder="com.example"
         [disabled]="isLoading"
       />
     </div>
-
+      <div class="input-group">
     <div class="form-field">
-      <label for="input2">GroupId</label>
+      <label for="input2">ArtifactId</label>
       <input
         id="input2"
         type="text"
-        [(ngModel)]="groupId"
+        [(ngModel)]="artifactId"
         placeholder="test"
         [disabled]="isLoading"
       />
