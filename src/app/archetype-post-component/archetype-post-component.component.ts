@@ -34,7 +34,6 @@ export class ArchetypePostComponentComponent {
       'Content-Type': 'application/json',
       'Accept': 'application/zip'
     });
-    console.log('Enviando requisição com body:', body);
    this.http.post('http://localhost:8080/api-clean/archetype', body, {
       headers: headers,
       responseType: 'blob', // Importante para receber dados binários
